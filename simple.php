@@ -2,6 +2,7 @@
 require_once('config.php');
 
 if ( ! empty( $_POST)) {
+    print_r($_POST); exit;
     //Connect and escape
     $mysql = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $data = array_map( array ($mysql, 'real_escape_string' ), $_POST);
