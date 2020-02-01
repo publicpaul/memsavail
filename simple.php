@@ -1,3 +1,21 @@
+<?php
+require_once('config.php');
+
+if ( ! empty( $_POST)) {
+    //Connect and escape
+    $mysql = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    $data = array_map( array ($mysql, 'real_escape_string' ), $_POST);
+
+    //Convert to variables
+    //String known as data??? THIS SHOULD CHANGE....???
+    extract( $data );
+
+    //Submit to database
+    $query = "INSERT INTO users (first name,last name,email,Local Num)"
+    $insert = $mysql->query( $query );
+}
+?>
+
 <!DOCTYPE html>
 <html lang= "en">
   <head>
@@ -7,7 +25,7 @@
     <title>MemsAvail Form </title>
   </head>
 
-  <body>
+<body>
       <?php if ( isset( $insert) ) : ?>
       <div class="message">
         <?php if ( $insert == true) : ?>
@@ -18,18 +36,24 @@
       </div>
     <?php endif; ?>
 
-    <form action="" method="post">
+  <form action="" method="post">
         <div class="form field">
-            <input type="text" class="text" name="First and Last Name" placeholder="Enter your name" required>
+            <input type="text" class="text" name="First Name" placeholder="Enter your first name" required>
+        </div>
+        <div class="form field">
+            <input type="text" class="text" name="Last Name" placeholder="Enter your last name" required>
         </div>
         <div class="form field">
             <input type="email" class="text" name="email" placeholder="Enter your email" required>
         </div>
         <div class="form field">
-            <input type="float" class="text" name="Union affiliation" placeholder="Enter your local number- just the number" required>
+            <input type="text" class="text" name="Local Number" placeholder="Enter yourlocal number- just the number" required>
         <div class="form field">
+
+  // need validation feature for local number. maybe a yes/no thingy...
+
             <button class="button"> Submit </button>
         </div>
-      </form>
-    <body>
-  <?/php>
+    </form>
+  <body>
+<?/html>
