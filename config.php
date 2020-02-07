@@ -8,3 +8,4 @@ define("DB_NAME", "forms");
 define("DB_USER", "root");
 define("DB_PASS," "");
 define("DB_HOST", "localhost");
+define("NONCE_SALT", OGaV5LRdLu8QtuV94pfxmoK10yJmMgSsxs8a3PVb6uW2wF);
