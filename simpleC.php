@@ -2,7 +2,8 @@
 require_once('config.php');
 require_once('countries.php');
 
-// This update to the code includes more field, also adding ...
+// This update to the code includes more fields, filter_input_array, serialize array -> string
+// which then is useable by mysql.
 //NONCE
 $time = time();
 $action = 'submit form';

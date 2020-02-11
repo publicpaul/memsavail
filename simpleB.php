@@ -1,14 +1,14 @@
 <?php
 require_once('config.php');
 
-
+// this code is a more complete secure form using NONCE check, Sanitize, Validation,
+// and Bound Parameters so that only values of the proper type are accepted as POST data.
 // NONCE - number used once ...
 
 $time = time();
 $action = 'submit form';
 $str = sprintf('%s_%s_%s', $action, $time, NONCE_SALT);
 $hash = hash('sha 512', $str);
-// the above line reads: sprintf(%s_%s_%s', $action, $time, NONCE_SALT);
 
 
 if ( ! empty( $_POST)) {
@@ -19,6 +19,8 @@ if ( ! empty( $_POST)) {
     // Check nonce
     $calc_str = sprintf('%s_%s_%s', $form_action, $timestamp, NONCE_SALT);
     $calc_hash = hash('sha 512', $calc_str);
+
+    // Sanitization/ Validation : know the diff.
 
     if ( $calc_hash == $form_hash ) {
         $filter_name +filter_var($name, FILTER_SANITIZE_STRING);

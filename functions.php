@@ -53,7 +53,7 @@
           $verify = verify_nonce($post['nonce'],
               $post['$form_action'], $post['timestamp']);
 
-          if ( false ===- $verify )  {
+          if ( false === $verify )  {
               return false;
           }
 
