@@ -12,7 +12,7 @@ require_once('load.php');
     $nonce = create_nonce($form_action, $timestamp);
 
 
-    if ( ! empty( $_POST)) {
+    if ( ! empty( $_POST)) { print_r($_POST); exit;
       // extract $_POST data
       insert = process($_POST);
 }
