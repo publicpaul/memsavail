@@ -19,7 +19,7 @@ if ( ! empty( $_POST)) {
     extract( $data );
 
     //Submit to database
-    $query = "INSERT INTO users (first name,last name,email,Local Num)"
+    $query = "INSERT INTO users (first name,last name,email,Local Num) VALUES ('$first name', '$last name', '$email', '$local number')";
     $insert = $mysql->query( $query );
 }
 
